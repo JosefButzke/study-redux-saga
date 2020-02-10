@@ -1,27 +1,24 @@
 import React from 'react';
 import { Container } from './styles';
 
-import { useDispatch } from 'react-redux';
 import { connect } from "react-redux";
 
 import { Link } from 'react-router-dom';
 
-const Page1 = (props) => {   
-    
-    const dispatch = useDispatch();
-    // const value = useSelector()
-    
+const Page1 = ({count, dispatch}) => {  
     return (
         <Container>
             <div>
-                <h1>Page1</h1>
+                <h1>{`State: ${count}`}</h1>
                 <button onClick={() => dispatch({ type: "INCREMENT"})}>Increment</button>
                 <button onClick={() => dispatch({ type: "DECREMENT"})}>Decrement</button>
 
                 <Link to='/carrinho'>
-                    <button>
-                        {`${props.value}Carrinho`}
-                    </button>
+                    <button>Carrinho</button>
+                </Link>
+                
+                <Link to='/rocket'>
+                    <button>Sidebar + Video</button>
                 </Link>
             </div>
         </Container>
@@ -30,7 +27,7 @@ const Page1 = (props) => {
 
 const mapStateToProps = state => {
     return {
-        value: state
+        count: state.count
     };
 };
 

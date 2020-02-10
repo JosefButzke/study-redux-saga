@@ -5,14 +5,17 @@ import { connect } from "react-redux";
 
 import { Link } from 'react-router-dom';
 
-const Page2 = (props) => {
+const Page2 = ({count}) => {
 
     return (
         <Container>
             <div>
-                <h1>{`State: ${props.value}`}</h1>
+                <h1>{`State: ${count}`}</h1>
                 <Link to='/'>
                     <button>Home</button>
+                </Link>
+                <Link to='/rocket'>
+                    <button>Sidebar + Video</button>
                 </Link>
             </div>
         </Container>
@@ -21,7 +24,7 @@ const Page2 = (props) => {
 
 const mapStateToProps = state => {
     return {
-        value: state
+        count: state.count
     };
 };
 
